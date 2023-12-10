@@ -373,5 +373,10 @@ const bills = [
   },
 ];
 
-// Start coding here
-const billMembers;
+const billMembers = bills.filter((haveMember) => {
+  return haveMember.member !== null;
+});
+const test = billMembers.map((justName) => {
+  return justName.member.name;
+});
+console.log(test);

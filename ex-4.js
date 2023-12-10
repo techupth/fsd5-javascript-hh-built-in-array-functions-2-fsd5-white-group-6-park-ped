@@ -373,5 +373,27 @@ const bills = [
   },
 ];
 
-// Start coding here
-const totalMembers;
+const totalMembers = bills
+  .filter((haveMember) => {
+    return haveMember.member !== null;
+  })
+  .map((justName) => {
+    return justName.member.name;
+  });
+const way1 = [...new Set(totalMembers)].length;
+const way2 = new Set(totalMembers).size;
+const way3 = totalMembers.filter((element, index) => {
+  return totalMembers.indexOf(element) === index;
+}).length;
+let newArray = [];
+const way4 = totalMembers.forEach((currentValue) => {
+  if (!newArray.includes(currentValue)) {
+    newArray.push(currentValue);
+  }
+});
+
+// console.log(totalMembers);
+console.log(`Unique Members Count: ${way1}`);
+console.log(`Unique Members Count: ${way2}`);
+console.log(`Unique Members Count: ${way3}`);
+console.log(`Unique Members Count: ${newArray.length}`);
