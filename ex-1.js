@@ -1,3 +1,18 @@
+// Exercise #1 : Bills
+
+// กำหนดให้ bills เก็บรายการสั่งซื้อสินค้าเป็น Array ที่มี Value เป็น Object ของแต่ละรายการสั่งซื้อ
+// ซึ่งแต่ละ Object จะประกอบไปด้วย Property ดังนี้
+// id คือ Property ที่มี Value เป็นรหัสประจำรายการสั่งซื้อชุดนั้น
+// transactionDate คือ Property ที่มี Value เป็น String ที่เก็บข้อมูลวันที่ที่มีการชำระเงิน
+// total คือ Property ที่มี Value เป็น Number ที่เก็บข้อมูลยอดชำระทั้งหมด
+// location คือ Property ที่มี Value เป็น String ที่เก็บข้อมูลสถานที่ที่มีการชำระเงิน
+// paymentType คือ Property ที่มี Value เป็น String ที่เก็บข้อมูลวิธีการชำระเงิน
+// member คือ Property ที่มี Value เป็น Object ที่เก็บข้อมูลสมาชิก
+
+// ให้หายอดชำระรวมทั้งหมดใน bills โดยใช้ Built-in Array Function แล้วทำการแสดงผลค่าออกมาดูทางหน้าจอด้วย console.log() ในรูปแบบดังนี้
+// "Total bill transaction is <total-amount>";
+// <total-amount> คือยอดชำระรวม
+
 const bills = [
   {
     id: "1",
@@ -374,3 +389,10 @@ const bills = [
 ];
 
 // Start coding here
+//access total and sum
+const sumTotal = bills.reduce(
+  (accumulator, bill) => accumulator + bill.total,
+  0
+);
+
+console.log(`Total bill transaction is ${sumTotal.toLocaleString()}`);
