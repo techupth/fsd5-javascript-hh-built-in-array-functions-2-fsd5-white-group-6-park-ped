@@ -1,3 +1,9 @@
+// Exercise #3 : Bill Members
+
+// จาก Exercise #1 เรามี Array bills ที่มี Value เป็น Object รายการสั่งซื้อ โดยแต่ละรายการสั่งซื้อจะเก็บข้อมูล member ที่มี Key name เก็บชื่อของสมาชิก
+// ให้ Declare ตัว Variable billMembers โดยมี Value เป็น Array ที่เก็บ String ของชื่อของสมาชิกทุกคนที่อยู่ใน bills โดยใช้ Built-in Array Function
+// เมื่อทำการแสดงผลค่าของ billMembers ออกมาดูทางหน้าจอด้วย console.log() จะได้ผลลัพธ์แบบนี้
+
 const bills = [
   {
     id: "1",
@@ -373,5 +379,17 @@ const bills = [
   },
 ];
 
-// Start coding here
-const billMembers;
+// Start coding here ข้อนี้ให้เลือกแต่ Object ที่ Property member ที่มี Value ที่ไม่ใช่ null มาเก็บไว้ใน Variable สักอันนึงก่อน
+const notNull = bills.filter((notNull) => notNull.member !== null);
+//console.log(notNull);
+const billMembers = notNull.map((findName) => findName.member.name);
+
+console.log(billMembers);
+
+//solution by using loop
+// for (let memberName of bills) {
+//   if (memberName.member !== null && memberName.member.name !== null) {
+//     let check = memberName.member.name;
+//     console.log(check);
+//   }
+// }

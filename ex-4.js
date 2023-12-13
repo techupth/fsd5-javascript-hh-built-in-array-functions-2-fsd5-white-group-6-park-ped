@@ -1,3 +1,13 @@
+// Exercise #4 : Bills Total Members
+
+// จาก Exercise #1 เรามี Array bills ที่มี Value เป็น Object รายการสั่งซื้อ โดยแต่ละรายการสั่งซื้อจะเก็บข้อมูล member ที่เก็บข้อมูลสมาชิก
+// Declare ตัว Variable totalMembers โดยให้มี Value เป็นจำนวนสมาชิกทั้งหมดใน bills (โดยที่ไม่นับคนซ้ำ) โดยใช้ Built-in Array Function
+// ทำการแสดงผล totalMembers ออกมาดูทางหน้าจอด้วย console.log() ในรูปแบบดังนี้
+
+// "Unique Members Count: <total-members>";
+// <total-members> คือจำนวนสมาชิกทั้งหมด
+// Hint🕵🏼‍♀️ : ใช้แนวทางจาก Exercise #2 และ Exercise #3 ได้
+
 const bills = [
   {
     id: "1",
@@ -373,5 +383,36 @@ const bills = [
   },
 ];
 
-// Start coding here
-const totalMembers;
+// ระบุปัญหา ***หา totalmembers =เป็นจำนวนสมาชิกทั้งหมด โดยไม่นับคนซ้ำ
+//use built-in function >> .filter null- .map'name'- **หาวิธีตัดคนซ้ำออก
+
+const notNull = bills.filter((notNull) => notNull.member !== null);
+const billMembers = notNull.map((findName) => findName.member.name); //ผลลัพธ์จาก ex3 billMembers.length=21
+console.log(billMembers.length);
+//วีธีที่ 1 หาค่าซ้ำ ใช้ indexOf
+//for (let i = 0; i < billMembers.length; i++) {
+//    const currentMembers = billMembers[i];
+//   const uniqueName = billMembers.indexOf(currentMembers);
+//   if (uniqueName !== i) {
+//     billMembers.splice(i, 1);
+//      i--;
+//    }
+//  }
+// console.log(billMembers.length);//12
+
+//วีธีที่ 2 ใช้ .sort
+const sortMember = billMembers.sort();
+console.log(sortMember);
+for (let i = 1; i < sortMember.length; ) {
+  if (sortMember[i] === sortMember[i - 1]) {
+    //เทียบตัวก่อนหน้า ซ้ำตัดออก
+    sortMember.splice(i, 1);
+  } else {
+    i++;
+  }
+}
+console.log(sortMember);
+let totalMembers = sortMember.length;
+console.log(`Unique Members Count: ${totalMembers}`);
+
+//วิธีที่ 3const removeDuplicate= [...new Set(billMembers)]; // set จะตัดสมาชิกที่อยู่ด้านใน [] ซ้ำออก ได้ผลลัพธ์ 12
